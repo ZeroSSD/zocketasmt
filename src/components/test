@@ -1,0 +1,132 @@
+
+
+
+// import React from 'react'
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import { SketchPicker } from 'react-color';
+// import wavyline from '../assets/wavyline.webp';
+// import { customCanvas } from './Canvas';
+// import { useRef } from 'react';
+
+
+// export const Editor = () => {
+//   const [bgcolor, setBgcolor]=React.useState("#0369A1")
+//   const [showColorPicker,setShowColorPicker]=React.useState(false)
+//   const fileInputRef = useRef(null);
+//   const inputRef = useRef(null);
+
+//   const handleColorChange=(color)=>{
+//     setBgcolor(color.hex)
+//   }
+  
+//   const handleImageChange = (event) => {
+//     if (fileInputRef.current && customCanvas) {
+//       customCanvas.setContext();
+//       fileInputRef.current.onchange = function() {
+//         const img = new Image();
+//         img.onload = function() {
+//           customCanvas.drawImage(this,0,0);
+//         };
+//         img.src = URL.createObjectURL(event.target.files[0]);
+//       };
+//     }
+//     }
+//     const handleCaptionText = (text) => {
+//        customCanvas.setContext();
+//        customCanvas.drawCaption(text, 100, 100); 
+//     }
+    
+//   const handleCTAText=(text)=>{
+//     customCanvas.setContext();
+//     console.log(text);
+//     customCanvas.drawCTA(this,100,100); 
+//   }
+
+//        // async function sampleColor() {
+//     //   if('EyeDropper' in window) {
+//     //     const ed = new EyeDropper();
+//     //     const color = await ed.open();
+//     //     if(color) {
+//     //       document.getElementById('canvas').style.backgroundColor = rgb;
+//     //     }
+//     //   }
+//     // }
+    
+//     // function setColorSwatch(rgb) {
+//     // 
+
+//   return (
+//     <div className='container-fluid'>
+//       <div className='row'>
+//         <div className='col'>
+//           <canvas id="canvas" className='border' width="1080px" height="1080px" style= {{backgroundColor:bgcolor, background:wavyline}}/>
+//         </div>
+//         <div className='col'>
+//           <div className="mb-3">
+//             <label  htmlFor="formFile" className="form-label">Select Image</label>
+//             <input id="inputFile" type="file" accept="image/*"  ref={fileInputRef} onChange={handleImageChange}/>
+//           </div>
+//           <br></br>
+//           <br></br>
+//             <div className="form-floating mb-3">
+//               <input type="text" className="form-control" id="floatingcaption"  ref={inputRef} onKeyUp={handleCaptionText} placeholder="Your Caption"/>
+//               <label htmlFor="floatingcaption">Caption</label>
+//             </div>
+//             <div className="form-floating">
+//               <input type="text" className="form-control" id="floatingcta" onChange={handleCTAText} placeholder="Your Call To Action"/>
+//               <label htmlFor="floatingcta">CTA</label>
+//             </div>
+//             <br></br>
+//             <button onClick={()=>setShowColorPicker(!showColorPicker)} className='btn btn-primary'>Change Background Color</button>
+//             {showColorPicker && ( 
+//               <div className='position-absolute' style={{zIndex:9999}}>
+//                 <SketchPicker color={bgcolor} onChange={handleColorChange}/>
+//               </div>
+//             )}
+//             {/* <button onClick="sampleColor()">Pippette icon</button> */}
+//         </div>
+//       </div>    
+//     </div>
+//   )
+// }
+
+
+
+
+
+// // Define the Canvas class
+// class CustomCanvas {
+
+//     constructor(canvasId) {
+//         this.canvasId = canvasId;
+//         }
+
+//         // Function to set the context of the canvas
+//     setContext() {
+//         console.log("hit")
+//         this.canvas = document.getElementById(this.canvasId);
+//         this.context = this.canvas.getContext('2d');
+//         }
+
+//     // Function to draw an image on the canvas
+//     drawImage(img, x, y, width, height) {
+//         this.context.drawImage(img, 50, 50, 400, 400);
+//         }
+
+//     drawCaption(text,x,y) {
+//         this.context.font = 'bold 30px Arial';
+//         this.context.fillStyle = 'white';
+//         this.context.fillText(text, 100, 100);
+//         this.context.restore();
+//     }
+
+//     drawCTA(text,x,y) {
+//         console.log(text)
+//         this.context.font = 'bold 30px Arial';
+//         this.context.fillStyle = 'white';
+//         this.context.fillText(text, 100, 100);
+//     }
+// }
+
+// // Create an instance of the CustomCanvas class
+// export const customCanvas = new CustomCanvas('canvas');
