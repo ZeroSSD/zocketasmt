@@ -27,6 +27,12 @@ export const Editor = () => {
       };
     }
     }
+  const handleCaptionText=(text)=>{
+    customCanvas.setContext();
+    console.log(text);
+    customCanvas.drawCaption(this,100,100); 
+  }
+
        // async function sampleColor() {
     //   if('EyeDropper' in window) {
     //     const ed = new EyeDropper();
