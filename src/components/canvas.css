@@ -1,0 +1,15 @@
+
+.col{
+  background-color: rgb(255, 255, 255);
+}
+
+.my-canvas{
+  background-color: #e5e5f7;
+  background: repeating-linear-gradient( -45deg, rgba(194, 194, 194, 0.2), rgba(231, 231, 231, 0.2) 7px, rgba(248, 248, 248, 0.2) 5px, rgba(255, 255, 255, 0.5) 7px );
+  border-right: 1px;
+}
+
+
+.editor{
+padding-top: 250px;
+}
