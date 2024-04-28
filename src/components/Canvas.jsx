@@ -8,6 +8,7 @@ class Canvas extends Component {
     this.canvasRef = React.createRef();
   }
 
+  //Called after the DOM is rendered
   componentDidMount() {
     this.updateCanvas();
   }
@@ -35,27 +36,26 @@ class Canvas extends Component {
     let lineIndex = 0;
     let currentLine = '';
 
-    // loop through words and add them to the current line
     for (let i = 0; i < words.length; i++) {
         const word = words[i];
 
-        // check if adding the word to the current line exceeds the maximum characters per line
+        // checking if adding the word to the current line exceeds the maximum characters per line
         if (currentLine.length + word.length + 1 > max_characters_per_line) {
-            // move to the next line
             ctx.fillText(currentLine.trim(), position_x, position_y + lineIndex * (font_size + padding));
             currentLine = word + ' ';
             lineIndex++;
         } else {
-            // add the word to the current line
+            
             currentLine += word + ' ';
         }
     }
 
-    // fill the remaining text on the current line
+    // fills the remaining text on the current line
     ctx.fillText(currentLine.trim(), position_x, position_y + lineIndex * (font_size + padding));
 }
 updateCTA(ctx, text2, rect) {
   if (text2 != null) {
+    //drwaing the CTA box
     ctx.beginPath();
     const radius = 10; // Set the radius of the rounded corners
     ctx.moveTo(rect.x, rect.y + radius);
@@ -93,6 +93,7 @@ updateCTA(ctx, text2, rect) {
     const maskStroke = new Image();
     const image = new Image();
 
+    //using the template data given to set a default template for the canvas
     designPattern.src = template.urls.design_pattern;
     mask.src = template.urls.mask;
     maskStroke.src = template.urls.stroke;
@@ -103,12 +104,16 @@ updateCTA(ctx, text2, rect) {
     const y = template.image_mask.y;
     const iwidth = template.image_mask.width;
     const iheight = template.image_mask.height;
-    setInterval(function () {
+
+    //
+    // setInterval(function () {
       ctx.globalCompositeOperation = 'destination-over';
       ctx.drawImage(designPattern, 0, 0);
       ctx.drawImage(mask, 0, 0);
       ctx.drawImage(maskStroke, 0, 0);
-    }, 16.666)
+    // }, 16.666)
+
+    //waits for the image to load and then perfoms functions
     image.onload = () => {
       ctx.globalCompositeOperation = 'source-over';
       ctx.drawImage(image, x, y, iwidth, iheight);
@@ -117,9 +122,7 @@ updateCTA(ctx, text2, rect) {
     ctx.globalCompositeOperation = 'source-over';
 
     this.updateCaption(ctx, text1);
-    // this.updateCTA(ctx,text2); 
 
-    // The rectangle should have x,y,width,height properties
     var rect = {
       x: template.cta.position.x,
       y: template.cta.position.y,
