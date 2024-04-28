@@ -106,12 +106,12 @@ updateCTA(ctx, text2, rect) {
     const iheight = template.image_mask.height;
 
     //
-    // setInterval(function () {
+    setInterval(function () {
       ctx.globalCompositeOperation = 'destination-over';
       ctx.drawImage(designPattern, 0, 0);
       ctx.drawImage(mask, 0, 0);
       ctx.drawImage(maskStroke, 0, 0);
-    // }, 16.666)
+    }, 16.666)
 
     //waits for the image to load and then perfoms functions
     image.onload = () => {
